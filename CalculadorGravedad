@@ -1,0 +1,11 @@
+class CalculadorGravedad {
+public static void main(String[] args) { 
+  double gravedad = -9.81; 
+	double velocidadInicial = 0.0; 
+	double tiempo = 10.0; 
+	double posicionInicial = 0.0; 
+	double resultado;
+	resultado= (0.5 * gravedad * Math.pow(tiempo,2))+(velocidadInicial*tiempo)+posicionInicial;
+	System.out.println("Un objeto que cae despues de " + tiempo + " segundos es " + resultado + " mts"); 
+	} 
+}
