@@ -1,11 +1,22 @@
+import java.io.*;
+import java.util.*;
 class CalculadorGravedad {
 public static void main(String[] args) { 
+    BufferedReader br=new BufferedReader(new InputStreamReader(System.in)); 
 	double gravedad = -9.81; 
-	double velocidadInicial = 4.0; 
-	double tiempo = 15.0; 
-	double posicionInicial = 1.0; 
-	double resultado;
-	resultado= (0.5 * gravedad * Math.pow(tiempo,2))+(velocidadInicial*tiempo)+posicionInicial;
-	System.out.println("Un objeto que cae despues de " + tiempo + " segundos es " + resultado + " mts"); 
+	double velocidadInicial = 0.0;
+	try
+      {
+		System.out.println("Ingrese tiempo");	
+		double tiempo = Double.parseDouble(br.readLine()); 
+		double posicionInicial = 0.0; 
+		double resultado;
+		resultado= (0.5 * gravedad * Math.pow(tiempo,2))+(velocidadInicial*tiempo)+posicionInicial;
+		System.out.println("Un objeto que cae despues de " + tiempo + " segundos es " + resultado + " mts"); 
+	}
+     catch(IOException e)
+        {
+	 System.out.println("Error");
+	}
 	} 
 }
