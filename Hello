@@ -1,0 +1,8 @@
+class Hello {
+  public static void main(String[] arguments) {
+	// Program execution begins here
+	System.out.println("Ingrese nombre");
+	String nombre=System.console().readLine();
+ 	System.out.println("Hola :"+nombre);
+	}
+}
