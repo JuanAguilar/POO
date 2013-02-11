@@ -1,0 +1,27 @@
+class FooCorporation
+{
+ public static void main(String [] args)
+ {
+   double resultado; 
+   int horasTrabajadas;
+   int horasExtras=0;
+   System.out.println("Ingrese horas trabajadas");
+   horasTrabajadas=Integer.parseInt(System.console().readLine());
+   if(horasTrabajadas<=60)
+   {
+  	 if(horasTrabajadas>40)
+  	 {
+  	   horasExtras=horasTrabajadas-40;
+  	   horasTrabajadas=40;
+  	 }
+  	 resultado=((horasTrabajadas*8)+(horasExtras*9.5));
+  	 System.out.println("Horas Trabajadas :"+ horasTrabajadas);
+  	 System.out.println("Horas Extras :"+ horasExtras);
+  	 System.out.println("Pago por horas trabajadas Base :"+(horasTrabajadas*8));
+  	 System.out.println("Pago por horas trabajadas Extras :"+(horasExtras*9.5));
+  	 System.out.println("Pago total :"+ resultado);
+   }else{
+    System.out.println("Las horas ingresadas son mayor al maximo de horas permitidas");
+   }
+ }
+}
