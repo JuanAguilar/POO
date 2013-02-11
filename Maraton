@@ -1,0 +1,59 @@
+class Maraton
+{
+  public static void main(String [] args)
+  {
+    int numeroAmigos;
+    System.out.println("Ingrese el numero de amigos que participaron en la maraton");
+  numeroAmigos=Integer.parseInt(System.console().readLine());
+  calcularPuestos(numeroAmigos);
+  }
+  public static void calcularPuestos(int numeroAmigos)
+  {
+    String [] nombreAmigos=new String [numeroAmigos];
+  double [] tiempoAmigos=new double [numeroAmigos];
+  for(int i=0;i<numeroAmigos;i++)
+  {
+    System.out.println("Ingrese nombre del participante :"+(i+1));
+    nombreAmigos[i]=System.console().readLine();
+    System.out.println("Ingrese tiempo del participante :"+(i+1));
+    tiempoAmigos[i]=Double.parseDouble(System.console().readLine());
+  }
+  int primero=calcularPrimero(tiempoAmigos,numeroAmigos);
+  System.out.println("Primer puesto: "+nombreAmigos[primero]+" Tiempo: "+tiempoAmigos[primero]);
+  int segundo=calcularSegundo(tiempoAmigos,numeroAmigos,primero);
+  System.out.println("Segundo puesto: "+nombreAmigos[segundo]+" Tiempo: "+tiempoAmigos[segundo]);
+  }
+  public static int calcularPrimero(double[]tiempo,int cantidad)
+  {
+    int poscicionMayor=0;
+  double mayor;
+  mayor=0;
+    for(int i=0;i<cantidad;i++)
+  {
+    if(mayor<tiempo[i])
+    {
+      mayor=tiempo[i];
+  	poscicionMayor=i;
+    }
+  }
+  return poscicionMayor;
+  }
+  public static int calcularSegundo(double[]tiempo,int cantidad,int primerPuesto)
+  {
+    int poscicionMayor=0;
+  	double mayor;
+  	mayor=0;
+  	for(int i=0;i<cantidad;i++)
+  	{
+  	  if(mayor<tiempo[i])
+  	  {
+  	    if(i!=primerPuesto)
+  		{
+  			mayor=tiempo[i];
+  			poscicionMayor=i;
+  		}
+  	  }
+  	}
+   return poscicionMayor;
+  }
+}
