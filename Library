@@ -1,0 +1,140 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Library {
+   //variables direccion y lista de libros que va a contener la biblioteca
+  String addressLibrary;
+	List<Book> books = new ArrayList<Book>();
+
+	// Add the missing implementation to this class
+	Library(String nameLibrary)
+	{
+	    //Asignacion de valor del parametro a variable direccion
+		addressLibrary=nameLibrary;
+	}
+	
+	public void addBook(Book libro)
+	{
+	   //agrega objeto libro a la lista de objetos libro de la biblioteca
+       books.add(libro);
+	}
+	
+	public static void printOpeningHours()
+	{
+	   //imprimer el horario de la biblioteca
+		System.out.println("Libraries are open daily from 9am to 5pm.");
+	}
+	
+	public void printAddress()
+	{
+	    //Imprime la direccion de la biblioteca
+		System.out.println(addressLibrary);
+	}
+	
+	public void borrowBook(String nameBook)
+	{
+	   //creacion de una bandera para tener en cuenta si existe un libro en la biblioteca
+		boolean flag=false;
+		//ciclo para validar si existe el libro en la biblioteca
+		for(int i=0;i<books.size();i++)
+		{
+		 flag=false;
+		 //condicional para verificar si el libro existe en la biblioteca
+		 if(books.get(i).getTitle().equals(nameBook))
+		 {
+		     //condicional para saber la disponibilidad del libro
+			 if(!books.get(i).isBorrowed())
+			 {
+			  //proceso para decir que el libro fue prestado y cambio de estado del libro a prestado
+			  System.out.println("You successfully borrowed"+nameBook);
+			  books.get(i).rented();
+			  flag=true;
+			 }else{
+			   //impresion de la no diponibilidad del libro si este ya esta disponible
+				 flag=true;
+				 System.out.println("Sorry, this book is already borrowed.");
+			 }
+		 } 
+		}
+		//aplicacion de la bandera para verificar si el libro que se busco esta o no en la biblioteca
+		if(flag==false)
+			 System.out.println("Sorry, this book is not in our catalog.");
+		
+	}
+	public void printAvailableBooks()
+	{
+	    //proceso para mostrar libros disponibles de acuerdo al estado del libro
+		if(books.size()==0)
+		{
+		    //Impresion de que no se encontro ningun libro dentro de la biblioteca
+			System.out.println("No book in catalog");
+		}else{
+			for(int i=0;i<books.size();i++)
+			{
+				 if(!books.get(i).isBorrowed())
+				 {
+				   //Impresion del libro si esta disponible
+				   System.out.println(books.get(i).getTitle());
+				 }
+			}
+		}
+	}
+	//Proceso para retornar libro
+	public void returnBook(String nameBook)
+	{
+	    //ciclio para verificar libro por libro cual hay que seleccionar
+		for(int i=0;i<books.size();i++)
+		{
+		 //condicion para verificar el libro que contiene en la libreria es igual al libro que se quiere buscar
+		 if(books.get(i).getTitle().equals(nameBook))
+		 {
+		  //verificacion para saber si el libro ha sido prestado
+			 if(books.get(i).isBorrowed())
+			 {
+			  //proceso para retornar el libro
+			  System.out.println("You successfully returned"+nameBook);
+			  books.get(i).returned();
+			 }
+		 }
+		}
+	}
+	
+	public static void main(String[] args) {
+		// Create two libraries
+		Library firstLibrary = new Library("10 Main St.");
+		Library secondLibrary = new Library("228 Liberty St.");
+		// Add four books to the first library
+		firstLibrary.addBook(new Book("The Da Vinci Code"));
+		firstLibrary.addBook(new Book("Le Petit Prince"));
+		firstLibrary.addBook(new Book("A Tale of Two Cities"));
+		firstLibrary.addBook(new Book("The Lord of the Rings"));
+		// Print opening hours and the addresses
+		System.out.println("Library hours:");
+		printOpeningHours();
+		System.out.println();
+		System.out.println("Library addresses:");
+		firstLibrary.printAddress();
+		secondLibrary.printAddress();
+		System.out.println();
+		// Try to borrow The Lords of the Rings from both libraries
+		System.out.println("Borrowing The Lord of the Rings:");
+		firstLibrary.borrowBook("The Lord of the Rings");
+		firstLibrary.borrowBook("The Lord of the Rings");
+		secondLibrary.borrowBook("The Lord of the Rings");
+		System.out.println();
+		// Print the titles of all available books from both libraries
+		System.out.println("Books available in the first library:");
+		firstLibrary.printAvailableBooks();
+		System.out.println();
+		System.out.println("Books available in the second library:");
+		secondLibrary.printAvailableBooks();
+		System.out.println();// Return The Lords of the Rings to the first
+								// library
+		System.out.println("Returning The Lord of the Rings:");
+		firstLibrary.returnBook("The Lord of the Rings");
+		System.out.println();
+		// Print the titles of available from the first library
+		System.out.println("Books available in the first library:");
+		firstLibrary.printAvailableBooks();
+	}
+}
