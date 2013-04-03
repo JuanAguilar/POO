@@ -1,0 +1,22 @@
+class AnioBisciesto
+{
+ public static void main(String [] args)
+ {
+   int n;
+   String res;
+   System.out.println("Ingrese un anio");
+   n=Integer.parseInt(System.console().readLine());
+   while(n!=-1)
+   {
+     if((n%4)==0 && (n%100)!=0)
+   {
+	   res="si";
+	 }else{
+		res="no";
+	 }
+	 System.out.println(res);
+	 System.out.println("Ingrese un anio");
+	 n=Integer.parseInt(System.console().readLine());
+   }
+ }
+}
