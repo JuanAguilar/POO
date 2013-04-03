@@ -1,0 +1,26 @@
+class PorcentajeDia
+{
+ public static void main(String [] args)
+ {
+  int seg,min,hor,segtot;
+  double porc;
+  System.out.println("Ingrese los segundos ");
+  seg=Integer.parseInt(System.console().readLine());
+  System.out.println("Ingrese los minutos ");
+  min=Integer.parseInt(System.console().readLine());
+  System.out.println("Ingrese las horas ");
+  hor=Integer.parseInt(System.console().readLine());
+  while(seg!=-1 && min!=-1 && hor!=-1)
+  {
+     segtot=((hor*3600)+(min*60)+seg);
+   porc=((segtot*100)/86399);
+	 System.out.println("Hora ingresada: "+hor+":"+min+":"+seg+" ,El procentage del dia es: "+porc+"%");
+	 System.out.println("Ingrese los segundos ");
+	 seg=Integer.parseInt(System.console().readLine());
+	 System.out.println("Ingrese los minutos ");
+	 min=Integer.parseInt(System.console().readLine());
+	 System.out.println("Ingrese las horas ");
+	 hor=Integer.parseInt(System.console().readLine());
+  }
+ }
+}
