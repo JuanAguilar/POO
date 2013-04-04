@@ -1,0 +1,66 @@
+class Histograma
+{
+  public static void main(String [] args)
+  {
+    int n;
+  int may=-1,men=999;
+	int rango;
+	System.out.println("Ingrese la cantidad de numeros a calcular");
+	n=Integer.parseInt(System.console().readLine());
+	int [] numeros=new int[n];
+	for(int i=0;i<n;i++)
+	{
+	  numeros[i]=(int)(Math.random()*100);
+	  if(may<numeros[i])
+	  {
+	   may=numeros[i];
+	  }
+	  if(men>numeros[i])
+	  {
+	   men=numeros[i];
+	  }
+	}
+	System.out.println("Numeros Utilizados");
+	for(int i=0;i<n;i++)
+	{
+	  System.out.println(numeros[i]);
+	}
+	System.out.println("mayor: "+may+" menor: "+men);
+	rango=Math.round((may-men)/10);
+	int limInferior,limSuperior;
+	System.out.println("rango: "+rango);
+	limInferior=men;
+	limSuperior=(limInferior+rango);
+	/*
+	for(int i=0;i<10;i++)
+	{
+	limSuperior=(limSuperior+rango);
+	System.out.println(limInferior+"-"+limSuperior);
+	}*/
+
+	System.out.println("Numeros repetidos en los siguientes intervalos");
+	int contIntervalo=0;
+    while(limSuperior<=may)
+	{
+	  for(int i=0;i<n;i++)
+		{
+		  if(numeros[i]>=limInferior && numeros[i]<=limSuperior)
+		  {
+		    contIntervalo++;
+		  }
+		}
+		System.out.println(limInferior+"-"+limSuperior+" : "+contIntervalo);
+		contIntervalo=0;
+		limInferior=limSuperior;
+		limSuperior=(limSuperior+rango);
+	}
+	for(int i=0;i<n;i++)
+		{
+		  if(numeros[i]>=limInferior && numeros[i]<=limSuperior)
+		  {
+		    contIntervalo++;
+		  }
+		}
+		System.out.println(limInferior+"-"+limSuperior+" : "+contIntervalo);
+  }
+}
