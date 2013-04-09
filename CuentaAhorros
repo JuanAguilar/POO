@@ -1,0 +1,48 @@
+class CuentaAhorros
+{
+ public static void main(String []args)
+ {
+   int salario,gastos,cuotaManejo,mes;
+   double resultado,resultadoParcial=0,interesMensual;
+   System.out.println("Ingrese el salario de la persona");
+   salario=Integer.parseInt(System.console().readLine());
+   System.out.println("Ingrese los gastos de la persona");
+   gastos=Integer.parseInt(System.console().readLine());
+   System.out.println("Ingrese la cuota de manejo de la cuota de la persona");
+   cuotaManejo=Integer.parseInt(System.console().readLine());
+   System.out.println("Ingrese los meses a calcular el ahorro de la persona");
+   mes=Integer.parseInt(System.console().readLine());
+   while(salario!=-1 && gastos!=-1 && cuotaManejo!=-1 && mes!=-1)
+   {
+      if(mes!=0)
+    {
+		 interesMensual=((double)((salario-gastos-cuotaManejo)*10)/100);
+		 resultado=(salario-gastos-cuotaManejo)+interesMensual;
+		 System.out.println("Interes del mes 1 :"+interesMensual);
+		 System.out.println("Ahorro en el mes 1: "+resultado);
+		 resultadoParcial=resultadoParcial+resultado;
+		 for(int i=2;i<=mes;i++)
+		 {
+		   interesMensual=(((resultadoParcial+(salario-gastos-cuotaManejo))*10)/100);
+		   resultado=((salario-gastos-cuotaManejo)+resultadoParcial+interesMensual);
+		   System.out.println("Interes del mes "+i+" :"+interesMensual);
+		   System.out.println("Ahorro en el mes "+i+": "+resultado);
+		   resultadoParcial=resultadoParcial+resultado;
+		 }
+		 resultadoParcial=0;
+	  }else{
+	     System.out.println("0");
+	  }
+	 
+	 //Ingreso de datos para validacion
+	   System.out.println("Ingrese el salario de la persona");
+	   salario=Integer.parseInt(System.console().readLine());
+	   System.out.println("Ingrese los gastos de la persona");
+	   gastos=Integer.parseInt(System.console().readLine());
+	   System.out.println("Ingrese la cuota de manejo de la cuota de la persona");
+	   cuotaManejo=Integer.parseInt(System.console().readLine());
+	   System.out.println("Ingrese los meses a calcular el ahorro de la persona");
+	   mes=Integer.parseInt(System.console().readLine());
+   }
+ }
+}
