@@ -1,0 +1,46 @@
+package Dibujo;
+import java.awt.*;
+import java.util.ArrayList;
+
+
+public class DrawGraphics {
+    ArrayList<BouncingBox> boxes=new ArrayList<BouncingBox>();
+    BouncingOval oval;
+
+    /** Initializes this class for drawing. */
+    public DrawGraphics() {
+
+      	boxes.add(new BouncingBox(200, 50, Color.RED));
+    		boxes.get(0).setMovementVector(1, 1);
+    		boxes.add(new BouncingBox(100, 70, Color.GREEN));
+    		boxes.get(1).setMovementVector(4, 6);
+    		boxes.add(new BouncingBox(160, 80, Color.BLUE));
+    		boxes.get(2).setMovementVector(10, 1);
+    		oval=new BouncingOval(20, 20, Color.orange);
+    		oval.setMovementVector(35, 20);
+    	 
+    }
+
+    /** Draw the contents of the window on surface. Called 20 times per second. */
+    public void draw(Graphics surface) {
+    	surface.setColor(Color.BLACK);
+    	Polygon pol=new Polygon();
+    	pol.addPoint(20, 50);
+    	pol.addPoint(40, 20);
+    	pol.addPoint(60, 90);
+    	surface.drawPolygon(pol);
+    	surface.setColor(Color.CYAN);
+    	surface.fillPolygon(pol);
+    	surface.setColor(Color.GREEN);
+        surface.drawLine(50, 50, 250, 250);
+        surface.setColor(Color.BLUE);
+        surface.drawArc(50, 50, 200, 200, 30, 50);
+        surface.setColor(Color.MAGENTA);
+        surface.drawOval(20, 50, 200, 200);           
+        for(BouncingBox mbox:boxes)
+        {
+        	mbox.draw(surface);
+        }
+        oval.draw(surface);
+    }
+} 
